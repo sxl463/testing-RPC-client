@@ -1,0 +1,12 @@
+
+down vote
+accepted
+
+This change was made to enable installing versions of the same library compiled for different architectures (e.g. on an AMD64 system, one version might go in /usr/lib/x86_64-linux-gnu while the other goes in i386-linux-gnu).
+
+Both the standard linker and dynamic linker know about these directories, so the change should be invisible for most applications. If the application is searching for actual library files manually, then it will need modification.
+
+Details of the changes to Ubuntu can be found here:
+
+https://wiki.ubuntu.com/MultiarchSpec
+
