@@ -1,0 +1,97 @@
+Main loop 3
+Main loop 1
+Main loop 2
+num_ready = 0
+Main loop 3
+Main loop 1
+Main loop 2
+num_ready = 1
+Main loop 3
+Main loop 4
+Main loop 1
+Main loop 2
+num_ready = 1
+Main loop 3
+Main loop 4
+Main loop 5
+Before c = (connecttab)
+c = f7530008
+Before auth_check, authorization:
+2nd auth_check...
+really_start_request finished, r = -1
+after handle_read, after switch, inside while c = connecttab
+out of while, before tmr_run
+End main loop
+Main loop 1
+Main loop 2
+num_ready = 1
+Main loop 3
+Main loop 4
+Main loop 5
+Before c = (connecttab)
+c = f7530008
+after handle_read, after switch, inside while c = connecttab
+out of while, before tmr_run
+End main loop
+Main loop 1
+Main loop 2
+num_ready = 1
+Main loop 3
+Main loop 4
+Main loop 1
+Main loop 2
+num_ready = 1
+Main loop 3
+Main loop 4
+Main loop 5
+Before c = (connecttab)
+c = f7530008
+Before auth_check, authorization:Basic c3hsNDYzOnNoZW5saXU=
+in auth_check2, authorization: Basic c3hsNDYzOnNoZW5saXU=
+decode l = 14
+authinfo:sxl463:shenliu
+authpass::shenliu
+DEBUG 1: Before open the password file
+DEBUG 2: read password file
+DEBUG 3: right user, do fclose()
+DEBUG 4: right password, cache the user's information
+really_start_request finished, r = 0
+after handle_read, after switch, inside while c = connecttab
+out of while, before tmr_run
+End main loop
+Main loop 1
+Main loop 2
+num_ready = 1
+Main loop 3
+Main loop 4
+Main loop 5
+Before c = (connecttab)
+c = f7530008
+after handle_read, after switch, inside while c = connecttab
+out of while, before tmr_run
+End main loop
+Main loop 1
+Main loop 2
+num_ready = 1
+Main loop 3
+Main loop 4
+Main loop 5
+Before c = (connecttab)
+c = f7530008
+after handle_read, after switch, inside while c = connecttab
+out of while, before tmr_run
+End main loop
+Main loop 1
+Main loop 2
+num_ready = 0
+Main loop 3
+Main loop 1
+Main loop 2
+num_ready = 0
+Main loop 3
+Main loop 1
+Main loop 2
+num_ready = 0
+Main loop 3
+Main loop 1
+Main loop 2
