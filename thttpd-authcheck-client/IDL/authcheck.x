@@ -1,20 +1,16 @@
 
 #include "idl_config.h"
-/*
-program FTPROG {
-    version FTVER {
-        readfile_res retrieve_file(request *) = 1;
-        int send_file(partsend *) = 2;
-	listfile_res listfile(request *) = 3;
-    } = 1;
-} = 0x31240000;
-*/
 
+const BUFFER_SIZE = 200;
 /* 
 A simplified interface between auth_check and auth_check2. 
     if ( hc->hs->vhost && hc->hostdir[0] != '\0' )
     hc->status = status; send_mime
 hc->hs->charset
+
+struct auth_check2_out {
+	int ret;
+};
 */
 struct shttpd_conn{
 	int global_passwd;
@@ -33,16 +29,16 @@ struct shttpd_conn{
 	long bytes_to_send; /*off_t usuall long int*/
 	long range_if; /*time_t*/
 	/*long st_mtime; */
-	string dirname<100>;
-	string authorization<100>;
-	string hostdir<100>;
-	string remoteuser<100>;
-	string encodedurl<100>; /* used in httpd_send_err*/
-	string useragent<100>;
-	string charset<100>;
-	string protocol<100>;
-	string p3p<100>;
-	string response<500>;
+	opaque dirname[BUFFER_SIZE];
+	opaque authorization[BUFFER_SIZE];
+	opaque hostdir[BUFFER_SIZE];
+	opaque remoteuser[BUFFER_SIZE];
+	opaque encodedurl[BUFFER_SIZE]; /* used in httpd_send_err*/
+	opaque useragent[BUFFER_SIZE];
+	opaque charset[BUFFER_SIZE];
+	opaque protocol[BUFFER_SIZE];
+	opaque p3p[BUFFER_SIZE];
+	opaque response[BUFFER_SIZE];
 };
 typedef struct shttpd_conn shttpd_conn;
 
@@ -55,6 +51,7 @@ program AUTHPROG {
 	int write_alloc_size(int) = 5;
     } = 1;
 } = 0x23451124;
+
 
 /*
         int send_file(partsend *) = 2;

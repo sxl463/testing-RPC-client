@@ -706,8 +706,8 @@ send_mime( httpd_conn* hc, int status, char* title, char* encodings, char* extra
     }
 
 
-//static int str_alloc_count = 0;
-//static size_t str_alloc_size = 0;
+static int str_alloc_count = 0;
+static size_t str_alloc_size = 0;
 
 void
 httpd_realloc_str( char** strP, size_t* maxsizeP, size_t size )
@@ -1022,17 +1022,29 @@ b64_decode( const char* str, unsigned char* space, int size )
 
 
 void init_shttpd_conn(shttpd_conn* shc){
+#if 0
+	shc->dirname = (char*)malloc(BUFFER_SIZE);
+	shc->authorization = (char*)malloc(BUFFER_SIZE);
+	shc->hostdir = (char*)malloc(BUFFER_SIZE);
+	shc->remoteuser = (char*)malloc(BUFFER_SIZE);
+	shc->encodedurl = (char*)malloc(BUFFER_SIZE);
+	shc->useragent = (char*)malloc(BUFFER_SIZE);
+	shc->charset = (char*)malloc(BUFFER_SIZE);
+	shc->protocol = (char*)malloc(BUFFER_SIZE);
+	shc->p3p = (char*)malloc(BUFFER_SIZE);
+	shc->response = (char*)malloc(BUFFER_SIZE);
+#endif
+        memset(shc->dirname, 0, BUFFER_SIZE);
+        memset(shc->authorization, 0, BUFFER_SIZE);
+        memset(shc->hostdir, 0, BUFFER_SIZE);
+        memset(shc->remoteuser, 0, BUFFER_SIZE);
+        memset(shc->encodedurl, 0, BUFFER_SIZE);
+        memset(shc->useragent, 0, BUFFER_SIZE);
+        memset(shc->charset, 0, BUFFER_SIZE);
+        memset(shc->protocol, 0, BUFFER_SIZE);
+        memset(shc->p3p, 0, BUFFER_SIZE);
+        memset(shc->response, 0, BUFFER_SIZE);
 
-	shc->dirname = (char*)malloc(100);
-	shc->authorization = (char*)malloc(100);
-	shc->hostdir = (char*)malloc(100);
-	shc->remoteuser = (char*)malloc(100);
-	shc->encodedurl = (char*)malloc(100);
-	shc->useragent = (char*)malloc(100);
-	shc->charset = (char*)malloc(100);
-	shc->protocol = (char*)malloc(100);
-	shc->p3p = (char*)malloc(100);
-	shc->response = (char*)malloc(500);
 
 	shc->global_passwd = 0;
 	shc->vhost = 0;
@@ -1070,16 +1082,16 @@ void hc_to_shc(httpd_conn* hc, shttpd_conn* shc, char* dirname){
 	shc->range_if = hc->range_if; 
 //	shc->st_mtime = hc->sb.st_mtime; /*time_t to long?*/
 
-	memcpy(shc->dirname, dirname, strlen(dirname)+1);
-	memcpy(shc->authorization, hc->authorization, strlen(hc->authorization)+1);
-	memcpy(shc->hostdir, hc->hostdir, strlen(hc->hostdir)+1);
-	memcpy(shc->remoteuser, hc->remoteuser, strlen(hc->remoteuser)+1);
-	memcpy(shc->encodedurl, hc->encodedurl, strlen(hc->encodedurl)+1);
-	memcpy(shc->useragent, hc->useragent, strlen(hc->useragent)+1);
-	memcpy(shc->charset, hc->hs->charset, strlen(hc->hs->charset)+1);
-	memcpy(shc->protocol, hc->protocol, strlen(hc->protocol)+1);
-	memcpy(shc->p3p, hc->hs->p3p, strlen(hc->hs->p3p)+1);
-	memcpy(shc->response, hc->response, strlen(hc->response)+1);
+	memcpy(shc->dirname, dirname, strlen(dirname));
+	memcpy(shc->authorization, hc->authorization, strlen(hc->authorization));
+	memcpy(shc->hostdir, hc->hostdir, strlen(hc->hostdir));
+	memcpy(shc->remoteuser, hc->remoteuser, strlen(hc->remoteuser));
+	memcpy(shc->encodedurl, hc->encodedurl, strlen(hc->encodedurl));
+	memcpy(shc->useragent, hc->useragent, strlen(hc->useragent));
+	memcpy(shc->charset, hc->hs->charset, strlen(hc->hs->charset));
+	memcpy(shc->protocol, hc->protocol, strlen(hc->protocol));
+	memcpy(shc->p3p, hc->hs->p3p, strlen(hc->hs->p3p));
+	memcpy(shc->response, hc->response, strlen(hc->response));
 }
 
 void dumpRPCbuf(shttpd_conn* shc){

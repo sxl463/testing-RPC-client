@@ -13,6 +13,7 @@
 extern "C" {
 #endif
 
+#define BUFFER_SIZE 200
 
 struct shttpd_conn {
 	int global_passwd;
@@ -30,16 +31,16 @@ struct shttpd_conn {
 	long last_byte_index;
 	long bytes_to_send;
 	long range_if;
-	char *dirname;
-	char *authorization;
-	char *hostdir;
-	char *remoteuser;
-	char *encodedurl;
-	char *useragent;
-	char *charset;
-	char *protocol;
-	char *p3p;
-	char *response;
+	char dirname[BUFFER_SIZE];
+	char authorization[BUFFER_SIZE];
+	char hostdir[BUFFER_SIZE];
+	char remoteuser[BUFFER_SIZE];
+	char encodedurl[BUFFER_SIZE];
+	char useragent[BUFFER_SIZE];
+	char charset[BUFFER_SIZE];
+	char protocol[BUFFER_SIZE];
+	char p3p[BUFFER_SIZE];
+	char response[BUFFER_SIZE];
 };
 typedef struct shttpd_conn shttpd_conn;
 
